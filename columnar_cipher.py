@@ -1,20 +1,5 @@
-"""
-ICT 3310 - Information Security
-Columnar Cipher Implementation
-Author: Student Implementation
-Description: Implementation of Columnar Cipher encryption and decryption algorithms
-"""
-
 def get_column_order(key):
-    """
-    Determines the column order based on alphabetical sorting of the key
-    
-    Args:
-        key (str): The encryption key
-        
-    Returns:
-        list: List of column indices in sorted order
-    """
+
     # Create pairs of (character, original_index)
     key_chars = [(char.upper(), i) for i, char in enumerate(key)]
     
@@ -25,16 +10,7 @@ def get_column_order(key):
     return [pair[1] for pair in sorted_chars]
 
 def columnar_encrypt(plaintext, key):
-    """
-    Encrypts plaintext using Columnar cipher with given key
-    
-    Args:
-        plaintext (str): Text to be encrypted
-        key (str): Encryption key (determines column arrangement)
-        
-    Returns:
-        str: Encrypted ciphertext
-    """
+  
     if not key:
         return plaintext
     
@@ -73,16 +49,7 @@ def columnar_encrypt(plaintext, key):
     return ciphertext
 
 def columnar_decrypt(ciphertext, key):
-    """
-    Decrypts ciphertext using Columnar cipher with given key
-    
-    Args:
-        ciphertext (str): Text to be decrypted
-        key (str): Decryption key (same as encryption key)
-        
-    Returns:
-        str: Decrypted plaintext
-    """
+
     if not key:
         return ciphertext
     
@@ -111,17 +78,7 @@ def columnar_decrypt(ciphertext, key):
     return plaintext.rstrip('X')
 
 def visualize_grid(text, key, operation="encrypt"):
-    """
-    Visualizes the columnar cipher grid for better understanding
-    
-    Args:
-        text (str): Text to visualize
-        key (str): Encryption/decryption key
-        operation (str): "encrypt" or "decrypt"
-        
-    Returns:
-        str: Visual representation of the grid
-    """
+  
     if not key:
         return text
     
@@ -160,21 +117,17 @@ def visualize_grid(text, key, operation="encrypt"):
     return visualization
 
 def main():
-    """
-    Main function to handle user interaction and demonstrate Columnar cipher
-    """
-    print("=" * 50)
-    print("COLUMNAR CIPHER IMPLEMENTATION")
-    print("=" * 50)
+   
+    print("COLUMNAR CIPHER ")
+
     
     while True:
         print("\nSelect operation:")
         print("1. Encrypt")
         print("2. Decrypt")
-        print("3. Visualize Grid")
-        print("4. Exit")
+        print("3. Exit")
         
-        choice = input("\nEnter your choice (1-4): ").strip()
+        choice = input("\nEnter your choice (1-3): ").strip()
         
         if choice == '1':
             # Encryption process
@@ -201,64 +154,12 @@ def main():
                 print(f"Plaintext:  {decrypted}")
             else:
                 print("Error: Key must be non-empty and contain only alphabetic characters")
-        
-        elif choice == '3':
-            # Grid visualization
-            text = input("Enter text to visualize: ")
-            key = input("Enter key: ").strip()
-            
-            if key and key.isalpha():
-                print(f"\nGrid Visualization:")
-                print(visualize_grid(text, key))
-            else:
-                print("Error: Key must be non-empty and contain only alphabetic characters")
                 
-        elif choice == '4':
+        elif choice == '3':
             print("Exiting Columnar Cipher program...")
             break
         else:
-            print("Invalid choice. Please select 1, 2, 3, or 4.")
-
-def demo_run():
-    """
-    Demonstration function showing sample inputs and outputs
-    """
-    print("\n" + "=" * 50)
-    print("SAMPLE DEMONSTRATION")
-    print("=" * 50)
-    
-    # Sample 1
-    text1 = "HELLO WORLD"
-    key1 = "KEY"
-    encrypted1 = columnar_encrypt(text1, key1)
-    decrypted1 = columnar_decrypt(encrypted1, key1)
-    
-    print(f"\nSample 1:")
-    print(f"Original:   {text1}")
-    print(f"Key:        {key1}")
-    print(f"Column Order: {get_column_order(key1)}")
-    print(f"Encrypted:  {encrypted1}")
-    print(f"Decrypted:  {decrypted1}")
-    print("Grid Visualization:")
-    print(visualize_grid(text1, key1))
-    
-    # Sample 2
-    text2 = "INFORMATION SECURITY"
-    key2 = "CIPHER"
-    encrypted2 = columnar_encrypt(text2, key2)
-    decrypted2 = columnar_decrypt(encrypted2, key2)
-    
-    print(f"\nSample 2:")
-    print(f"Original:   {text2}")
-    print(f"Key:        {key2}")
-    print(f"Column Order: {get_column_order(key2)}")
-    print(f"Encrypted:  {encrypted2}")
-    print(f"Decrypted:  {decrypted2}")
-    print("Grid Visualization:")
-    print(visualize_grid(text2, key2))
+            print("Invalid choice. Please select 1, 2, or 3.")
 
 if __name__ == "__main__":
-    # Run demonstration first
-    demo_run()
-    # Then run interactive program
     main()

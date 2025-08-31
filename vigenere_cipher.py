@@ -1,21 +1,5 @@
-"""
-ICT 3310 - Information Security
-Vigenère Cipher Implementation
-Author: Student Implementation
-Description: Implementation of Vigenère Cipher encryption and decryption algorithms
-"""
-
 def prepare_key(text, key):
-    """
-    Prepares the key by repeating it to match the length of the text
     
-    Args:
-        text (str): The text to be encrypted/decrypted
-        key (str): The encryption key
-        
-    Returns:
-        str: Extended key matching the text length
-    """
     # Remove non-alphabetic characters from text for key length calculation
     alpha_text = ''.join([char for char in text if char.isalpha()])
     key = key.upper()
@@ -34,16 +18,7 @@ def prepare_key(text, key):
     return extended_key
 
 def vigenere_encrypt(plaintext, key):
-    """
-    Encrypts plaintext using Vigenère cipher with given key
-    
-    Args:
-        plaintext (str): Text to be encrypted
-        key (str): Encryption key (alphabetic characters only)
-        
-    Returns:
-        str: Encrypted ciphertext
-    """
+  
     if not key.isalpha():
         raise ValueError("Key must contain only alphabetic characters")
     
@@ -70,16 +45,7 @@ def vigenere_encrypt(plaintext, key):
     return ciphertext
 
 def vigenere_decrypt(ciphertext, key):
-    """
-    Decrypts ciphertext using Vigenère cipher with given key
-    
-    Args:
-        ciphertext (str): Text to be decrypted
-        key (str): Decryption key (same as encryption key)
-        
-    Returns:
-        str: Decrypted plaintext
-    """
+   
     if not key.isalpha():
         raise ValueError("Key must contain only alphabetic characters")
     
@@ -106,12 +72,10 @@ def vigenere_decrypt(ciphertext, key):
     return plaintext
 
 def main():
-    """
-    Main function to handle user interaction and demonstrate Vigenère cipher
-    """
-    print("=" * 50)
-    print("VIGENÈRE CIPHER IMPLEMENTATION")
-    print("=" * 50)
+    
+    
+    print("VIGENÈRE CIPHER ")
+   
     
     while True:
         print("\nSelect operation:")
@@ -159,42 +123,5 @@ def main():
         else:
             print("Invalid choice. Please select 1, 2, or 3.")
 
-def demo_run():
-    """
-    Demonstration function showing sample inputs and outputs
-    """
-    print("\n" + "=" * 50)
-    print("SAMPLE DEMONSTRATION")
-    print("=" * 50)
-    
-    # Sample 1
-    text1 = "HELLO WORLD"
-    key1 = "KEY"
-    encrypted1 = vigenere_encrypt(text1, key1)
-    decrypted1 = vigenere_decrypt(encrypted1, key1)
-    
-    print(f"\nSample 1:")
-    print(f"Original:   {text1}")
-    print(f"Key:        {key1}")
-    print(f"Extended:   {prepare_key(text1, key1)}")
-    print(f"Encrypted:  {encrypted1}")
-    print(f"Decrypted:  {decrypted1}")
-    
-    # Sample 2
-    text2 = "Information Security"
-    key2 = "CIPHER"
-    encrypted2 = vigenere_encrypt(text2, key2)
-    decrypted2 = vigenere_decrypt(encrypted2, key2)
-    
-    print(f"\nSample 2:")
-    print(f"Original:   {text2}")
-    print(f"Key:        {key2}")
-    print(f"Extended:   {prepare_key(text2, key2)}")
-    print(f"Encrypted:  {encrypted2}")
-    print(f"Decrypted:  {decrypted2}")
-
 if __name__ == "__main__":
-    # Run demonstration first
-    demo_run()
-    # Then run interactive program
     main()

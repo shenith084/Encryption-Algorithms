@@ -106,8 +106,7 @@ def rail_fence_menu():
     while True:
         print("\n1. Encrypt")
         print("2. Decrypt")
-        print("3. Visualize Pattern")
-        print("4. Back to Main Menu")
+        print("3. Back to Main Menu")
         
         choice = input("\nEnter choice: ").strip()
         
@@ -136,18 +135,6 @@ def rail_fence_menu():
                 print("Invalid number of rails")
                 
         elif choice == '3':
-            text = input("Enter text to visualize: ")
-            try:
-                rails = int(input("Enter number of rails: "))
-                if rails >= 2:
-                    print("\nFence Pattern:")
-                    print(visualize_fence(text, rails))
-                else:
-                    print("Number of rails must be at least 2")
-            except ValueError:
-                print("Invalid number of rails")
-                
-        elif choice == '4':
             break
         else:
             print("Invalid choice")
@@ -158,8 +145,7 @@ def columnar_menu():
     while True:
         print("\n1. Encrypt")
         print("2. Decrypt")
-        print("3. Visualize Grid")
-        print("4. Back to Main Menu")
+        print("3. Back to Main Menu")
         
         choice = input("\nEnter choice: ").strip()
         
@@ -182,15 +168,6 @@ def columnar_menu():
                 print("Key must contain only alphabetic characters")
                 
         elif choice == '3':
-            text = input("Enter text to visualize: ")
-            key = input("Enter key: ").strip()
-            if key.isalpha():
-                print("\nGrid Visualization:")
-                print(visualize_grid(text, key))
-            else:
-                print("Key must contain only alphabetic characters")
-                
-        elif choice == '4':
             break
         else:
             print("Invalid choice")
